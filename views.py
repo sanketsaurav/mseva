@@ -2,12 +2,12 @@ from base import BaseHandler
 
 class Home(BaseHandler):
 	"""
-	Handle the homepage, which shows the 10 most recent blog posts
+	Handle the homepage.
 	"""
 
 	def get(self):
 		"""
-		For a GET request, return the homepage
+		For a GET request, render the homepage
 		"""
 
 		self.response.out.write('Hello, mSeva.')
@@ -22,5 +22,9 @@ class Signup(BaseHandler):
 		For a POST request, register a new doctor.
 		"""
 
-		pass
+		fields = {}
 
+		for field in DOCTOR_REG_FIELDS:
+			fields[field] = self.request.get(field)
+
+		
