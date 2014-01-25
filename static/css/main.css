@@ -128,8 +128,9 @@ a:after {
           transform: rotate(-10deg);
 }
 
-.register {
-
+#register {
+margin-top: 30px;
+margin-bottom: 10px;
 }
 
 #registerBtn {
