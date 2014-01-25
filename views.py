@@ -10,7 +10,7 @@ class Home(BaseHandler):
 		For a GET request, render the homepage
 		"""
 
-		self.response.out.write('Hello, mSeva.')
+		self.render('home.html')
 
 class Signup(BaseHandler):
 	"""
