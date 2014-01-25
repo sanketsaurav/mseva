@@ -40,6 +40,9 @@ class User(ndb.Model):
 		and throw an exception if something's wrong
 		"""
 
+		# TODO: Add validation for PIN code and Registration
+		# number.
+
 		if not is_email_valid(fields['email']):
 			raise ValidationError("That's not a valid email.")
 
@@ -73,3 +76,11 @@ class User(ndb.Model):
 			return str(user.key.id())
 		else:
 			raise AuthenticationError("Invalid email/password!")
+
+class Log(ndb.Model):
+	"""
+	Call logs to store each incoming call, and the doctor to whom each
+	call is being connected to
+	"""
+
+	pass
