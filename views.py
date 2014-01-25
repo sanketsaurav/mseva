@@ -60,6 +60,8 @@ class Signup(BaseHandler):
 	"""
 	Handle a new doctor registration.
 	"""
+	def get(self):
+		self.render('signup.html')
 
 	def post(self):
 		"""
@@ -75,7 +77,7 @@ class Signup(BaseHandler):
 		except Exception, error_msg:
 			self.render('signup.html', error = error, user = self.user)
 
-def Connect(BaseHandler):
+class Connect(BaseHandler):
 	"""
 	Grab the category of doctor that needs to be connected to, and return the
 	doctor's number in plaintext

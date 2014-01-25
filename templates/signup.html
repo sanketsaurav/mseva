@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% set title='iHelp' %}
+
+{% block content %}
+<div id="">
+		<div class="container">
+			<div class="row">
+			<div id="register">
+
+<form class="form-horizontal" role="form">
+	<legend>Sign Up</legend>
+	<div class="form-group">
+    	<label for="inputName" class="col-sm-2 control-label">Dr</label>
+    	<div class="col-sm-4">
+      		<input type="phone" class="form-control" id="inputName" placeholder="Your Name">
+    	</div>
+  		<label for="inputUid" class="col-sm-2 control-label">Unique Id</label>
+    	<div class="col-sm-4">
+      		<input type="phone" class="form-control" id="inputUid" placeholder="Registration Number">
+    	</div>
+  	</div>
+
+	<div class="form-group">
+    	<label for="inputPhone" class="col-sm-2 control-label">Speciality</label>
+    	<div class="col-sm-4">
+      		<select>
+      			<option>General Physician</option>
+      			<option>Cardiology</option>
+      			<option>Gynaecology</option>
+      			<option>Xyz</option>
+      		</select>
+    	</div>
+    	<label for="inputLanguage" class="col-sm-2 control-label">Language</label>
+    	<div class="col-sm-4">
+      		<select>
+      			<option>English</option>
+      			<option>Hindi</option>
+      			<option>Gynaecology</option>
+      			<option>Xyz</option>
+      		</select>
+  
+    	</div>
+  </div>
+  <legend>When is your Helping Hour</legend>
+  <div class="form-group">
+    <label for="inputHour" class="col-sm-2 control-label">From</label>
+    <select name="inputHour" class="">
+      <option>1</option> <option>2</option> <option>3</option> <option>4</option> <option>5</option>
+      <option>6</option> <option>7</option> <option>8</option> <option>9</option> <option>10</option>
+      <option>11</option> <option>12</option> <option>13</option> <option>14</option> <option>15</option>
+      <option>16</option> <option>17</option> <option>18</option> <option>19</option> <option>20</option>
+      <option>21</option> <option>22</option> <option>23</option> <option>24</option> 
+    </select>
+    <select class="">
+      <option>00</option> <option>15</option> <option>30</option> <option>45</option>
+    </select>
+  </div>
+
+ <div class="form-group">
+  <label for="inputToHour" class="col-sm-2 control-label">To</label>
+    <select name="inputToHour" class="" >
+      <option>21</option> <option>22</option> <option>23</option> <option>24</option> 
+    </select>
+    <select class="">
+      <option>00</option> <option>15</option> 
+    </select>
+   </div>
+
+  <div class="form-group">
+    <label for="inputPincode" class="col-sm-2 control-label">Pincode</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" id="inputPincode" placeholder="Pincode">
+    </div>
+  </div>
+	  
+  <div class="form-group">
+    <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+    <div class="col-sm-5">
+      <input type="phone" class="form-control" id="inputEmail" placeholder="Phone No.">
+    </div>
+  </div>
+	  
+
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-5">
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputRePassword" class="col-sm-2 control-label">Re-Enter Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputRePassword" placeholder="Password Again">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Register</button>
+    </div>
+  </div>
+</form>
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- headerwrap -->
+
+
+
+{% endblock content %}
