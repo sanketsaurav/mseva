@@ -128,6 +128,11 @@ a:after {
           transform: rotate(-10deg);
 }
 
+.doctor{
+    margin-top: 83px;
+    background-color: #2ECC71;
+    height: 500px;
+}
 #register {
 margin-top: 30px;
 margin-bottom: 10px;

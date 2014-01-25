@@ -89,3 +89,10 @@ class Connect(BaseHandler):
 		"""
 
 		exotel_response = {field:self.request.get(field) for field in EXOTEL_RESPONSE_FIELDS}
+
+
+class Browse(BaseHandler):
+	"""docstring for Browse"""
+	def get(self):
+		doctor=User.fetch_users()
+		self.render('browse.html', doctors=doctor)

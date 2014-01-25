@@ -34,6 +34,14 @@ class User(ndb.Model):
 	joined = ndb.DateTimeProperty(auto_now_add=True)
 
 	@classmethod
+	def fetch_users(cls):
+		"""
+		Returns the most recent 10 blog posts
+		"""
+		top_users = cls.query().fetch(10)
+		return list(top_users)
+
+	@classmethod
 	def create_user(cls, fields):
 		"""
 		Create a new user with the provided credentials,

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% set title='Doctors List' %}
+
+{% block content %}
+<div class="doctor">
+{% for doctor in doctors %}
+	<article>
+		<section>
+			<h4 class="docname">{{doctor.name | safe}}</h4> 
+			<h5 class="docspec">{{doctor.speciality | safe}}</h5>
+			
+		</section>
+		<p class="post-content">{{post.content.replace('\n', '<br>') | safe}}</p>
+	</article>
+	{% else %}
+	<div class="no-doc">
+		<p>This List Is Still Being Compiled.</p>	
+	</div>
+	{% endfor %}
+
+</div>
+
+{% endblock content %}
