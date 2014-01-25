@@ -4,12 +4,30 @@ from utils import *
 
 class User(ndb.Model):
 	"""
-	A registered user
+	A registered Doctor.
 	"""
 
-	username = ndb.StringProperty(required=True)
+	SPECIALITY_TYPES = ['GENERAL',
+						'CARDIAC',
+						'GYNAEC',
+						'PEDIATRIC']
+
+	name = ndb.StringProperty(required=True)
+	registration_number = ndb.StringProperty(required=True)
+	speciality = ndb.StringProperty(required=True,
+									choices=SPECIALITY_TYPES,
+									)
+	
+	timeslot_day = ndb.StringProperty(required=True)
+	timeslot_from = ndb.StringProperty(required=True)
+	timeslot_to = ndb.StringProperty(required=True)
+	
+	phone_number = ndb.StringProperty(required=True)
+	pincode = ndb.StringProperty(required=True)
+	
+	is_active = ndb.BooleanProperty(default=False)
+	email = ndb.StringProperty(required=True)
 	password = ndb.StringProperty(required=True)
-	email = ndb.StringProperty()
 	joined = ndb.DateTimeProperty(auto_now_add=True)
 
 	@classmethod

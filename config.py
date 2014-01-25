@@ -7,3 +7,7 @@ JINJA_ENV = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR),
 								autoescape=True)
 
 SECRET = "gfyf6s$^&gsbb78bcasb153347dsa6uh^(&yhd6"
+
+DOCTOR_REG_FIELDS = ('name', 'regno', 'speciality', 'language', 
+					'timeslot_day', 'timeslot_from', 'timeslot_to',
+					'pincode', 'mobile',)

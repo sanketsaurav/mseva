@@ -11,3 +11,16 @@ class Home(BaseHandler):
 		"""
 
 		self.response.out.write('Hello, mSeva.')
+
+class Signup(BaseHandler):
+	"""
+	Handle a new doctor registration.
+	"""
+
+	def post(self):
+		"""
+		For a POST request, register a new doctor.
+		"""
+
+		pass
+
