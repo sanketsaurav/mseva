@@ -35,7 +35,7 @@ class Login(BaseHandler):
 			self.redirect('/')
 
 		else:
-			self.render('login.html')
+			self.render('login.html', user=self.user)
 
 	def post(self):
 		"""
@@ -71,6 +71,9 @@ class Signup(BaseHandler):
 	Handle a new doctor registration.
 	"""
 	def get(self):
+		if self.user:
+			self.redirect('/')
+
 		self.render('signup.html')
 
 	def post(self):
@@ -105,7 +108,7 @@ class Connect(BaseHandler):
 		day = str(today.weekday())
 		hour = str(today.hour) + str(today.minutes)
 
-		doctor = User.get_available(category, day, hour)
+		doctor = User.fetch_available_users(category, day, hour)
 
 		if doctor:
 			#put logging in taskqueue with URL-safe key
@@ -144,3 +147,28 @@ class Browse(BaseHandler):
 		doctors=User.get_all() or []
 		self.render('browse.html', doctors=doctors, user=self.user)
 
+class UserLogs(BaseHandler):
+	"""
+	Handle Logs on dashboard
+	"""
+
+	def get(self):
+
+		if not self.user:
+			self.redirect('/login')
+
+		logs = [
+				{'date' : '12:30 PM - Jan 26, 2014',
+				'number' : '7865432567',
+				'ailment' : 'CARDIAC',},
+				{'date' : '11:34 PM - Jan 21, 2014',
+				'number' : '7865634527',
+				'ailment' : 'GENERAL',},
+				{'date' : '09:30 PM - Jan 22, 2014',
+				'number' : '9865432567',
+				'ailment' : 'PADEATRIC',},
+				{'date' : '00:30 AM - Jan 19, 2014',
+				'number' : '987632567',
+				'ailment' : 'CARDIAC',}]
+
+		self.render('logs.html', user=self.user, logs=logs)

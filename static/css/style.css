@@ -37,6 +37,7 @@ margin-bottom: 10px;
 	border-bottom: solid #aaa 1px;
 }
 
+<<<<<<< Updated upstream
 .docname{
 	font-weight: bold;
 }
@@ -52,4 +53,8 @@ margin-bottom: 10px;
 .phoneNo{
     color: #fff;
     font-size: 30px;
+=======
+.greet {
+	color: red !important;
+>>>>>>> Stashed changes
 }

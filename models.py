@@ -44,35 +44,12 @@ class User(ndb.Model):
 		self.put()
 
 	@classmethod
-	def get_available(cls, speciality, hour):
+	def fetch_available_users(cls, speciality, hour):
 		"""
-		Get available doctors on basis of category and timeslots
+		Returns the available users
 		"""
-
-		users = memcache.get(speciality)
-		if not users:
-			users = cls.query(cls.speciality==speciality).order(cls.latest_call).fetch()
-			memcache.set(speciality)
-
-		users_list = list(users.filter(cls.timeslot_from < hour, cls.timeslot_to > hour))
-
-		if users_list:
-			return users_list[0]
-
-	@classmethod
-	def get_all(cls):
-		"""
-		Get a list of all doctors registered
-		"""
-		pass
-
-	@classmethod
-	def fetch_users(cls):
-		"""
-		Returns the most recent 10 blog posts
-		"""
-		top_users = cls.query().fetch(10)
-		return list(top_users)
+		top_users = cls.query(cls.speciality==speciality).filter(cls.timeslot_from < hour).fetch()
+		return list(top_users)[0]
 
 	@classmethod
 	def create_user(cls, fields):

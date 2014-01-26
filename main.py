@@ -6,5 +6,6 @@ app = webapp2.WSGIApplication([
 								('/logout/?', 'views.Logout'),
 								('/browse/?', 'views.Browse'),
 								('/signup/?', 'views.Signup'),
+								('/logs/?', 'views.UserLogs'),
 								('/connect/([a-z]+)/?', 'views.Connect')
 							], debug=True)

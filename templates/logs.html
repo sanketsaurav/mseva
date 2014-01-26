@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% set title='iHelp' %}
+
+{% block content %}
+	<div class="container">
+	<div class="row">
+
+<h3 class="section-heading">Call Logs</h3>
+{% for log in logs %}
+<div class="well">
+<p><strong>{{log.date}}</strong><br><em style="">{{log.ailment}}</em>
+<br><strong>Phone Number:</strong> {{log.number}}
+<br><a href="#" class="btn btn-large btn-success">See Profile</a> <a href="#" class="btn btn-large btn-info">Call Now</a>
+
+</p>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock content %}
