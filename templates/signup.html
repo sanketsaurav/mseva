@@ -8,63 +8,50 @@
 			<div class="row">
 			<div id="register">
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="/signup" method="POST">
 	<legend>Sign Up</legend>
 	<div class="form-group">
-    	<label for="inputName" class="col-sm-2 control-label">Dr</label>
-    	<div class="col-sm-4">
-      		<input type="phone" class="form-control" id="inputName" placeholder="Your Name">
-    	</div>
+    <label for="inputName" class="col-sm-2 control-label">Dr</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" name="name" id="inputName" placeholder="Your Name">
+    </div>
   		<label for="inputUid" class="col-sm-2 control-label">Unique Id</label>
     	<div class="col-sm-4">
-      		<input type="phone" class="form-control" id="inputUid" placeholder="Registration Number">
+      		<input type="text" class="form-control" name="regno" id="inputUid" placeholder="Registration Number">
     	</div>
-  	</div>
+  </div>
 
 	<div class="form-group">
     	<label for="inputPhone" class="col-sm-2 control-label">Speciality</label>
-    	<div class="col-sm-4">
-      		<select>
+    	<div class="col-sm-4 " name="speciality">
+      		<select class="form-control">
       			<option>Physician</option>
       			<option>Cardiology</option>
       			<option>Gynaecology</option>
-      			<option>Xyz</option>
       		</select>
     	</div>
     	<label for="inputLanguage" class="col-sm-2 control-label">Language</label>
-    	<div class="col-sm-4">
-      		<select>
+    	<div class="col-sm-4 " name="language">
+      		<select class="form-control">
       			<option>English</option>
       			<option>Hindi</option>
-      			<option>Gynaecology</option>
-      			<option>Xyz</option>
+      			<option>Bengali</option>
       		</select>
+      </div>
+  </div>
   
-    	</div>
-  </div>
-  <legend>When would you like to Help</legend>
   <div class="form-group">
-    <label for="inputHour" class="col-sm-2 control-label">From</label>
-    <select name="inputHour" class=" col-sm-3 form-control">
-      <option>1</option> <option>2</option> <option>3</option> <option>4</option> <option>5</option>
-      <option>6</option> <option>7</option> <option>8</option> <option>9</option> <option>10</option>
-      <option>11</option> <option>12</option> <option>13</option> <option>14</option> <option>15</option>
-      <option>16</option> <option>17</option> <option>18</option> <option>19</option> <option>20</option>
-      <option>21</option> <option>22</option> <option>23</option> <option>24</option> 
-    </select>
-    <select class="form-control col-sm-3">
-      <option>00</option> <option>15</option> <option>30</option> <option>45</option>
+    <label for="inputDay" class="col-offest-2 col-sm-8 control-label">Every week you would like to take phone calls on </label>
+    <select name="timeslot_day" class="form-control timeslot col-sm-2 ">
+      <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
     </select>
   </div>
-
- <div class="form-group">
+  <div class="form-group">
+    <label for="inputToHour" class="col-sm-2 control-label">From</label>
+    <input type="text" name="timeslot_from" class=" col-sm-2 form-control timeslot" placeholder="hhmm">
+  
   <label for="inputToHour" class="col-sm-2 control-label">To</label>
-    <select name="inputToHour" class="col-sm-3" >
-      <option>21</option> <option>22</option> <option>23</option> <option>24</option> 
-    </select>
-    <select class="col-sm-3">
-      <option>00</option> <option>15</option> 
-    </select>
+    <input type="text" name="timeslot_to" class="col-sm-2 form-control timeslot" placeholder="hhmm">
    </div>
 
   <div class="form-group">
@@ -91,17 +78,18 @@
   
   <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputRePassword" class="col-sm-2 control-label">Re-Enter Password</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
       <input type="password" class="form-control" id="inputRePassword" placeholder="Password Again">
     </div>
   </div>
+  
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default">Register</button>

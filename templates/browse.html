@@ -7,15 +7,15 @@
 {% for doctor in doctors %}
 	<article>
 		<section>
-			<h4 class="docname">{{doctor.name | safe}}</h4> 
-			<h5 class="docspec">{{doctor.speciality | safe}}</h5>
-			
+			<h4 class="docname">Dr. {{doctor.name | safe}}</h4> 
+			<h6 class="docspec">Speciality: {{doctor.speciality | safe}}</h5>
+			<hr />
 		</section>
 		<p class="post-content">{{post.content.replace('\n', '<br>') | safe}}</p>
 	</article>
 	{% else %}
 	<div class="no-doc">
-		<p>This List Is Still Being Compiled.</p>	
+		<p>This page displays the awesome doctors who volunteer!</p>	
 	</div>
 	{% endfor %}
 

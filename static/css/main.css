@@ -142,6 +142,22 @@ margin-bottom: 10px;
     margin-top: 30px;
     margin-bottom: 10px;
 }
+
+.timeslot{
+    width: 10%;
+}
+.no-doc{
+    height: 400px;
+    padding: 100px;
+}
+#container div.content{
+    padding:50px;
+    font-size: 30px;
+}
+#registerBtn a{
+    font-size: 25px;
+    text-transform: uppercase;
+}
 /* ==========================================================================
    Wrap Sections
    ========================================================================== */
