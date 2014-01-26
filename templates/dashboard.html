@@ -7,8 +7,66 @@
 <div class="container">
 	<div class="row">
 
-<h3 class="section-heading">Dashboard</h3>
+<h3 class="section-heading">Dashboard <a class="pull-right" href="/logs"><button type="submit" class="btn btn-success btn-md logbutton" >View Logs</button></a>
+</h3>
+
 </div>
+
+<div class="row">
+	Your speciality is <span class"docspeciality docname">{{user.speciality | safe}}</span>
+</div>
+  
+ <form class="form-horizontal" action="/" method="">
+  <div class="form-group">	
+	<label for="inputLanguage" class="col-sm-3 control-label">Language preference</label>
+     <div class="col-sm-4 " name="language">
+      		<select class="form-control" name="language" >
+      			<option value="EN" {% if user.language=='EN' %} selected="true" {% endif %}>English</option>
+      			<option value="HI" {% if user.language=='HI' %} selected="true" {% endif %}>Hindi</option>
+      			<option value="BN" {% if user.language=='BN' %} selected="true" {% endif %}>Bengali</option>
+      		</select>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="inputToHour" class="control-label col-sm-3 ">I will take calls from</label>
+      <div class="col-sm-2">
+        <input type="text" name="timeslot_from" class="form-control" value='{{user.timeslot_from | safe}}'placeholder="HHMM">
+      </div>
+
+      <label for="inputToHour" class="control-label col-sm-1">To</label>
+      <div class="col-sm-2">
+        <input type="text" name="timeslot_to" class="form-control" placeholder="HHMM" value='{{user.timeslot_to | safe}}'>
+      </div>
+   </div>
+
+
+	<div class="form-group">
+		<label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+    	<div class="col-sm-4">
+      <input type="phone" class="form-control" id="inputEmail" name="mobile" placeholder="Phone No." value={{user.mobile}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-4">
+      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" value={{user.email}}>
+    </div>
+    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-4">
+      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+  
+
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success btn-lg">Change the settings</button>
+    </div>
+  </div>
+</form>  
 </div>
 
 {% endblock content %}

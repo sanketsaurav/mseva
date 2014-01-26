@@ -143,3 +143,4 @@ class Browse(BaseHandler):
 
 		doctors=User.get_all() or []
 		self.render('browse.html', doctors=doctors, user=self.user)
+
