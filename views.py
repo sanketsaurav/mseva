@@ -1,6 +1,8 @@
 from base import BaseHandler
 from models import User, Log
 
+from config import *
+
 class Home(BaseHandler):
 	"""
 	Handle the homepage
@@ -40,8 +42,16 @@ class Login(BaseHandler):
 		For a POST request, log the user in and redirect her to the homepage
 		"""
 
-		email = self.response.get('email')
-		password = self.response.get('password')
+		email = self.request.get('email')
+		password = self.request.get('password')
+
+		try:
+			user_id = User.authenticate(email, password)
+			self.set_secure_cookie('user', str(user_id))
+			self.redirect('/')
+		
+		except Exception, e:
+			self.render("login.html", user=self.user, error = e)
 
 class Logout(BaseHandler):
 	"""
@@ -75,7 +85,7 @@ class Signup(BaseHandler):
 			self.redirect('/login')
 
 		except Exception, error_msg:
-			self.render('signup.html', error = error, user = self.user)
+			self.render('signup.html', error = error_msg, fields=fields, user = self.user)
 
 class Connect(BaseHandler):
 	"""

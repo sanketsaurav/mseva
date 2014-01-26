@@ -22,7 +22,6 @@ class User(ndb.Model):
 	language = ndb.StringProperty(required=True,
 								choices=LANGUAGE_OPTIONS)
 	
-	timeslot_day = ndb.StringProperty(required=True)
 	timeslot_from = ndb.StringProperty(required=True)
 	timeslot_to = ndb.StringProperty(required=True)
 	
@@ -34,7 +33,7 @@ class User(ndb.Model):
 	password = ndb.StringProperty(required=True)
 	joined = ndb.DateTimeProperty(auto_now_add=True)
 
-	latest_call = ndb.DateTimeProperty(default=datetime.datetime.now(IST()))
+	latest_call = ndb.DateTimeProperty(default=datetime.datetime.now())
 
 	def log_latest_call(self):
 		"""
@@ -45,14 +44,14 @@ class User(ndb.Model):
 		self.put()
 
 	@classmethod
-	def get_available(cls, speciality, day, hour):
+	def get_available(cls, speciality, hour):
 		"""
 		Get available doctors on basis of category and timeslots
 		"""
 
 		users = memcache.get(speciality)
 		if not users:
-			users = cls.query(cls.speciality==speciality, cls.timeslot_day==day).order(cls.latest_call).fetch()
+			users = cls.query(cls.speciality==speciality).order(cls.latest_call).fetch()
 			memcache.set(speciality)
 
 		users_list = list(users.filter(cls.timeslot_from < hour, cls.timeslot_to > hour))
@@ -103,7 +102,7 @@ class User(ndb.Model):
 		return new_user.id()
 
 	@classmethod
-	def authenticate(cls, username, password):
+	def authenticate(cls, email, password):
 		"""
 		Check if the provided username and password are valid
 		"""

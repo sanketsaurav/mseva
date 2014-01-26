@@ -14,7 +14,7 @@ JINJA_ENV = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR),
 SECRET = "gfyf6s$^&gsbb78bcasb153347dsa6uh^(&yhd6"
 
 DOCTOR_REG_FIELDS = ('name', 'regno', 'speciality', 'language', 
-					'timeslot_day', 'timeslot_from', 'timeslot_to',
+					'timeslot_from', 'timeslot_to',
 					'pincode', 'mobile', 'email', 'password')
 
 EXOTEL_RESPONSE_FIELDS = ('CallSid', 'From', 'To', 

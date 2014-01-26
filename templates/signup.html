@@ -3,11 +3,17 @@
 {% set title='iHelp' %}
 
 {% block content %}
-<div id="">
 		<div class="container">
 			<div class="row">
-			<div id="register">
-      <h3 class="section-heading">Sign Up to Volunteer</h3>
+
+      <h3 class="section-heading">Signup</h3>
+
+      {% if error %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Drats!</strong> {{error}}
+      </div>
+      {% endif %}
 
 <form class="form-horizontal" role="form" action="/signup" method="POST">
 	<div class="form-group">
@@ -23,60 +29,32 @@
 
 	<div class="form-group">
     	<label for="inputPhone" class="col-sm-2 control-label">Speciality</label>
-    	<div class="col-sm-4 " name="speciality">
-      		<select class="form-control">
-      			<option>Physician</option>
-      			<option>Cardiology</option>
-      			<option>Gynaecology</option>
-            <option>Pediatric</option>
+    	<div class="col-sm-4 ">
+      		<select class="form-control" name="speciality" required>
+      			<option value="GENERAL">Physician</option>
+      			<option value="CARDIAC">Cardiology</option>
+      			<option value="GYNAEC">Gynaecology</option>
+            <option value="PEDIATRIC">Pediatric</option>
       		</select>
     	</div>
     	<label for="inputLanguage" class="col-sm-2 control-label">Language preference</label>
     	<div class="col-sm-4 " name="language">
-      		<select class="form-control">
-      			<option>English</option>
-      			<option>Hindi</option>
-      			<option>Bengali</option>
+      		<select class="form-control" name="language">
+      			<option value="EN">English</option>
+      			<option value="HI">Hindi</option>
+      			<option value="BN">Bengali</option>
       		</select>
       </div>
   </div>
-<!--   <div class="form-group row-fluid">
-    <div class="col-md-6">
-      <div class="col-md-6 col-md-offset-2">
-        <label for="inputDay" class="control-label pull-right">I'd like to take calls every</label>
-      </div>
-      <div class="col-md-4">
-        <select name="timeslot_day" class="form-control">
-          <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="col-md-4">
-        <label for="inputToHour" class="control-label pull-right">from</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="timeslot_from" class="form-control" placeholder="HHMM">
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="col-md-4">
-        <label for="inputToHour" class="control-label pull-right">to</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="timeslot_to" class="form-control" placeholder="HHMM">
-      </div>
-    </div>
-  </div> -->
 
   <div class="form-group">
-        <label for="inputDay" class="control-label col-sm-3">I'd like to take calls every</label>
+        <!-- <label for="inputDay" class="control-label col-sm-3">I'd like to take calls everyday</label>
       <div class="col-sm-3">
         <select name="timeslot_day" class="form-control">
           <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
         </select>
-      </div>
-      <label for="inputToHour" class="control-label col-sm-1">from</label>
+      </div> -->
+      <label for="inputToHour" class="control-label col-sm-3 col-sm-offset-1">I'd like to take calls everyday from</label>
 
       <div class="col-sm-2">
         <input type="text" name="timeslot_from" class="form-control" placeholder="HHMM">
@@ -93,36 +71,33 @@
   <div class="form-group">
     <label for="inputPincode" class="col-sm-2 control-label">Pincode</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="inputPincode" placeholder="Pincode">
+      <input type="text" class="form-control" id="inputPincode" name="pincode" placeholder="Pincode">
     </div>
     <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
     <div class="col-sm-4">
-      <input type="phone" class="form-control" id="inputEmail" placeholder="Phone No.">
+      <input type="phone" class="form-control" id="inputEmail" name="mobile" placeholder="Phone No.">
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-4">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
     </div>
     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-4">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
+      <button type="submit" class="btn btn-success btn-lg">Signup</button>
     </div>
   </div>
 </form>
 
 			</div><!-- row -->
 		</div><!-- container -->
-	</div><!-- headerwrap -->
-
-
 
 {% endblock content %}
