@@ -1,8 +1,10 @@
 import os
 import jinja2
+import datetime
 
 EXOTEL_SID = "mseva"
-EXOTEL_TOKEN = "b27ba2bedf4aa491952ac2729e078d04f69afa7e"
+EXOTEL_TOKEN = "72a23675d8e7dd8834ba12e3c9b3ca0ea723fb18"
+EXOTEL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 

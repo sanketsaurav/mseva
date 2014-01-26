@@ -1,5 +1,5 @@
 from base import BaseHandler
-from models import User
+from models import User, Log
 
 class Home(BaseHandler):
 	"""
@@ -90,9 +90,46 @@ class Connect(BaseHandler):
 
 		exotel_response = {field:self.request.get(field) for field in EXOTEL_RESPONSE_FIELDS}
 
+		today = datetime.datetime.now(IST())
+
+		day = str(today.weekday())
+		hour = str(today.hour) + str(today.minutes)
+
+		doctor = User.get_available(category, day, hour)
+
+		if doctor:
+			#put logging in taskqueue with URL-safe key
+			Log.log_call_pre(call_sid=exotel_response['CallSid'],
+							from_number=exotel_response['From'],
+							doctor=doctor)
+			self.response.out.write(doctor.mobile)
+
+class PassthruLog(BaseHandler):
+	"""
+	Log the call details received from passthru applet
+	"""
+
+	def get():
+		"""
+		Log the post-call data
+		"""
+
+		call_sid = self.request.get('CallSid')
+		call = Log.query(Log.call_sid==call_sid).fetch()
+
+		if call:
+			call_duration = self.request.get('DialCallDuration')
+			start_time = self.request.get('StartTime')
+			end_time = self.request.get('EndTime')
+
+			call.put()
 
 class Browse(BaseHandler):
-	"""docstring for Browse"""
+	"""
+	Handle browse
+	"""
+
 	def get(self):
-		doctor=User.fetch_users()
-		self.render('browse.html', doctors=doctor)
+
+		doctors=User.get_all()
+		self.render('browse.html', doctors=doctor, user=self.user)

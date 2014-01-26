@@ -1,4 +1,5 @@
 from google.appengine.ext import ndb
+from google.appengine.api import memcache
 
 from utils import *
 
@@ -32,6 +33,39 @@ class User(ndb.Model):
 	email = ndb.StringProperty(required=True, indexed=True)
 	password = ndb.StringProperty(required=True)
 	joined = ndb.DateTimeProperty(auto_now_add=True)
+
+	latest_call = ndb.DateTimeProperty(default=datetime.datetime.now(IST()))
+
+	def log_latest_call(self):
+		"""
+		Log the latest call dispatched to the doctor
+		"""
+
+		self.latest_call = datetime.datetime.now()
+		self.put()
+
+	@classmethod
+	def get_available(cls, speciality, day, hour):
+		"""
+		Get available doctors on basis of category and timeslots
+		"""
+
+		users = memcache.get(speciality)
+		if not users:
+			users = cls.query(cls.speciality==speciality, cls.timeslot_day==day).order(cls.latest_call).fetch()
+			memcache.set(speciality)
+
+		users_list = list(users.filter(cls.timeslot_from < hour, cls.timeslot_to > hour))
+
+		if users_list:
+			return users_list[0]
+
+	@classmethod
+	def get_all(cls):
+		"""
+		Get a list of all doctors registered
+		"""
+		pass
 
 	@classmethod
 	def fetch_users(cls):
@@ -91,4 +125,33 @@ class Log(ndb.Model):
 	call is being connected to
 	"""
 
-	pass
+	call_sid = ndb.StringProperty(required=True, indexed=True)
+	from_number = ndb.StringProperty(required=True)
+	call_duration = ndb.StringProperty()
+	start_time = ndb.StringProperty()
+	end_time = ndb.StringProperty()
+	doctor = ndb.KeyProperty(required=True, kind='User')
+	added = ndb.DateTimeProperty(auto_now_add=True)
+
+	@classmethod
+	def log_call_pre(cls, call_sid, from_number, doctor):
+		"""
+		Logs the details when a call has been routed
+		"""
+
+		call = cls(call_sid=call_sid, from_number=from_number, doctor=doctor).put()
+		return call.urlsafe()
+
+	def log_call_post(cls, call_sid, call_duration, start_time, end_time):
+		"""
+		Add call log data after the call has finished
+		"""
+
+		call = cls.query(cls.call_sid==call_sid).fetch()
+
+		if call:
+			call.call_duration = call_duration
+			call.start_time = start_time
+			call.end_time = end_time
+
+			return call.put()

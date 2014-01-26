@@ -8,6 +8,18 @@ USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
 PASSWORD_RE = re.compile(r"^.{3,20}$")
 EMAIL_RE  = re.compile(r'^[\S]+@[\S]+\.[\S]+$')
 
+class IST(datetime.tzinfo):
+	"""
+	Timezone details for Indian Standard Time, UTC+5:30
+	Returns a datetime.tzinfo object, that can be passed into a datetime.datetime() object
+	"""
+
+	def utcoffset(self, dt):
+		return datetime.timedelta(hours=+5, minutes=+30)
+
+	def dst(self, dt):
+		return datetime.timedelta(0)
+
 def render_str(template, **params):
 	"""
 	Return a string rendered by a Jinja2 template
