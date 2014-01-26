@@ -7,17 +7,17 @@
 		<div class="container">
 			<div class="row">
 			<div id="register">
+      <h3 class="section-heading">Sign Up to Volunteer</h3>
 
 <form class="form-horizontal" role="form" action="/signup" method="POST">
-	<legend>Sign Up</legend>
 	<div class="form-group">
-    <label for="inputName" class="col-sm-2 control-label">Dr</label>
+    <label for="inputName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-4">
       <input type="text" class="form-control" name="name" id="inputName" placeholder="Your Name">
     </div>
-  		<label for="inputUid" class="col-sm-2 control-label">Unique Id</label>
+  		<label for="inputUid" class="col-sm-2 control-label">Registration number</label>
     	<div class="col-sm-4">
-      		<input type="text" class="form-control" name="regno" id="inputUid" placeholder="Registration Number">
+      		<input type="text" class="form-control" name="regno" id="inputUid" placeholder="Your MCAII regn. no.">
     	</div>
   </div>
 
@@ -28,9 +28,10 @@
       			<option>Physician</option>
       			<option>Cardiology</option>
       			<option>Gynaecology</option>
+            <option>Pediatric</option>
       		</select>
     	</div>
-    	<label for="inputLanguage" class="col-sm-2 control-label">Language</label>
+    	<label for="inputLanguage" class="col-sm-2 control-label">Language preference</label>
     	<div class="col-sm-4 " name="language">
       		<select class="form-control">
       			<option>English</option>
@@ -39,60 +40,81 @@
       		</select>
       </div>
   </div>
-  
+<!--   <div class="form-group row-fluid">
+    <div class="col-md-6">
+      <div class="col-md-6 col-md-offset-2">
+        <label for="inputDay" class="control-label pull-right">I'd like to take calls every</label>
+      </div>
+      <div class="col-md-4">
+        <select name="timeslot_day" class="form-control">
+          <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="col-md-4">
+        <label for="inputToHour" class="control-label pull-right">from</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" name="timeslot_from" class="form-control" placeholder="HHMM">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="col-md-4">
+        <label for="inputToHour" class="control-label pull-right">to</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" name="timeslot_to" class="form-control" placeholder="HHMM">
+      </div>
+    </div>
+  </div> -->
+
   <div class="form-group">
-    <label for="inputDay" class="col-offest-2 col-sm-8 control-label">Every week you would like to take phone calls on </label>
-    <select name="timeslot_day" class="form-control timeslot col-sm-2 ">
-      <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="inputToHour" class="col-sm-2 control-label">From</label>
-    <input type="text" name="timeslot_from" class=" col-sm-2 form-control timeslot" placeholder="hhmm">
-  
-  <label for="inputToHour" class="col-sm-2 control-label">To</label>
-    <input type="text" name="timeslot_to" class="col-sm-2 form-control timeslot" placeholder="hhmm">
-   </div>
+        <label for="inputDay" class="control-label col-sm-3">I'd like to take calls every</label>
+      <div class="col-sm-3">
+        <select name="timeslot_day" class="form-control">
+          <option>Mon</option> <option>Tue</option> <option>Wed</option> <option>Thu</option> <option>Fri</option><option>Sat</option> <option>Sun</option>
+        </select>
+      </div>
+      <label for="inputToHour" class="control-label col-sm-1">from</label>
+
+      <div class="col-sm-2">
+        <input type="text" name="timeslot_from" class="form-control" placeholder="HHMM">
+      </div>
+
+      <label for="inputToHour" class="control-label col-sm-1">to</label>
+      <div class="col-sm-2">
+        <input type="text" name="timeslot_to" class="form-control" placeholder="HHMM">
+      </div>
+    </div>
+
+
 
   <div class="form-group">
     <label for="inputPincode" class="col-sm-2 control-label">Pincode</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <input type="text" class="form-control" id="inputPincode" placeholder="Pincode">
     </div>
-  </div>
-	  
-  <div class="form-group">
     <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <input type="phone" class="form-control" id="inputEmail" placeholder="Phone No.">
     </div>
   </div>
-	  
 
   <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <input type="email" class="form-control" id="inputEmail" placeholder="Email">
     </div>
-  </div>
-  
-  <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="inputRePassword" class="col-sm-2 control-label">Re-Enter Password</label>
-    <div class="col-sm-5">
-      <input type="password" class="form-control" id="inputRePassword" placeholder="Password Again">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Register</button>
+      <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
     </div>
   </div>
 </form>

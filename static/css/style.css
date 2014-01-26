@@ -1,7 +1,38 @@
+@import url('/static/css/main.css');
+
+.doctor{
+    margin-top: 83px;
+    background-color: #2ECC71;
+    height: 500px;
+}
+#register {
+margin-top: 30px;
+margin-bottom: 10px;
+}
+
+#registerBtn {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
 .timeslot{
-	width: 10%;
+    width: 10%;
 }
 .no-doc{
-	height: 400px;
-	padding: 100px;
+    height: 400px;
+    padding: 100px;
+}
+#container div.content{
+    padding:50px;
+    font-size: 30px;
+}
+#registerBtn a{
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.section-heading {
+	text-transform: uppercase;
+	font-weight: bold;
+	border-bottom: solid #aaa 1px;
 }
