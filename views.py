@@ -141,5 +141,5 @@ class Browse(BaseHandler):
 
 	def get(self):
 
-		doctors=User.get_all()
+		doctors=User.get_all() or []
 		self.render('browse.html', doctors=doctors, user=self.user)

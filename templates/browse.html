@@ -7,15 +7,39 @@
 {% for doctor in doctors %}
 	<article>
 		<section>
-			<h4 class="docname">Dr. {{doctor.name | safe}}</h4> 
-			<h6 class="docspec">Speciality: {{doctor.speciality | safe}}</h5>
-			<hr />
+		<div class="container well">
+			<h4 class="docname row" >
+				<span class="doctorname">Dr. {{doctor.name | safe}}
+				</span>
+			</h4> 
+			<h6 class="docspec row" >
+				<span class="col-xs-5 docspeciality">
+					Speciality: {{doctor.speciality | safe}}
+				</span>
+				<span class="col-xs-5 docrating">Rating {{doctor.rating | safe}}
+				</span>
+			</h6> 
+			
+		</div>
 		</section>
 		<p class="post-content">{{post.content.replace('\n', '<br>') | safe}}</p>
 	</article>
 	{% else %}
 	<div class="no-doc">
-		<p>This page displays the awesome doctors who volunteer!</p>	
+		<div class="container well">
+			<h4 class="docname row" >
+				<span class="col-xs-6 doctorname">Dr. Abhishek Pandey
+				</span>
+			</h4> 
+			<h6 class="docspec row" >
+				<span class="col-xs-5 docspeciality">
+					Speciality: Hurting
+				</span>
+				<span class="col-xs-5 docrating">Rating : 5/5
+				</span>
+			</h6> 
+			
+		</div>
 	</div>
 	{% endfor %}
 
